@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BottomWallController : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class BottomWallController : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        Destroy(collision.gameObject);    
+        Destroy(collision.gameObject);
+        // 現在のScene名を取得する
+        Scene loadScene = SceneManager.GetActiveScene();
+        // Sceneの読み直し
+        SceneManager.LoadScene(loadScene.name);
     }
 }
